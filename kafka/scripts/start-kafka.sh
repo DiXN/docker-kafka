@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Optional ENV variables:
 # * ADVERTISED_HOST: the external ip for the container, e.g. `docker-machine ip \`docker-machine active\``
 # * ADVERTISED_PORT: the external port for Kafka, e.g. 9092
@@ -13,6 +15,8 @@ if [ ! -z "$HELIOS_PORT_kafka" ]; then
   ADVERTISED_HOST=`echo $HELIOS_PORT_kafka | cut -d':' -f 1 | xargs -n 1 dig +short | tail -n 1`
   ADVERTISED_PORT=`echo $HELIOS_PORT_kafka | cut -d':' -f 2`
 fi
+
+echo >> $KAFKA_HOME/config/server.properties
 
 # Set the external host and port
 if [ ! -z "$ADVERTISED_HOST" ]; then

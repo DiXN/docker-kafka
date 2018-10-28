@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 ENV SCALA_VERSION 2.12
 ENV KAFKA_VERSION 2.0.0
-ENV KAFKA_HOME /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION"
+ENV KAFKA_HOME "/opt/kafka_$SCALA_VERSION-$KAFKA_VERSION"
 
 RUN curl -L "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=/kafka/$KAFKA_VERSION/kafka_$SCALA_VERSION-$KAFKA_VERSION.tgz" | tar xfz - -C /opt
 
